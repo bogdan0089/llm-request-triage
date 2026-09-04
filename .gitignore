@@ -1,0 +1,19 @@
+# Секрети
+.env
+
+# Віртуальне середовище
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Інструменти
+.ruff_cache/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
