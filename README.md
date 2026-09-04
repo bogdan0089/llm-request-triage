@@ -1,4 +1,4 @@
-# Netpeak Request Triage
+# LLM Request Triage
 
 Batch service that reads internal team requests from a CSV file, classifies each one via Google Gemini, and produces a structured JSON result and a Markdown report.
 
@@ -12,8 +12,8 @@ Batch service that reads internal team requests from a CSV file, classifies each
 ### Setup
 
 ```bash
-git clone <repo-url>
-cd netpeak-request-triage
+git clone https://github.com/bogdan0089/llm-request-triage.git
+cd llm-request-triage
 
 python -m venv .venv
 source .venv/bin/activate      # Linux / macOS
@@ -24,7 +24,12 @@ pip install -r requirements.txt
 
 ### Environment variables
 
-Create a `.env` file in the project root (never commit it):
+Copy the template and fill in your key (`.env` is gitignored and must stay that way):
+
+```bash
+cp .env.example .env           # Linux / macOS
+# Copy-Item .env.example .env  # Windows
+```
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
@@ -48,8 +53,13 @@ Writes `output/output.json` and `output/report.md`.
 ### Run in Docker
 
 ```bash
-docker build -t netpeak-triage .
-docker run --rm --env-file .env -v "$(pwd)/output:/app/output" netpeak-triage
+docker build -t llm-request-triage .
+
+# Linux / macOS
+docker run --rm --env-file .env -v "$(pwd)/output:/app/output" llm-request-triage
+
+# Windows PowerShell
+docker run --rm --env-file .env -v "${PWD}/output:/app/output" llm-request-triage
 ```
 
 The key is passed at runtime and never baked into the image (`.dockerignore` excludes `.env`).
