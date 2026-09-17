@@ -1,5 +1,7 @@
 # LLM Request Triage
 
+[![CI](https://github.com/bogdan0089/llm-request-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/bogdan0089/llm-request-triage/actions/workflows/ci.yml)
+
 Batch service that reads internal team requests from a CSV file, classifies each one via Google Gemini, and produces a structured JSON result and a Markdown report.
 
 ## How to run
@@ -193,4 +195,3 @@ prose scaffolding around them.
   and deterministic, which matters for testing prompt changes.
 - **Persistent storage** — swap flat JSON for SQLite so results can be queried and updated
   incrementally instead of re-running the whole pipeline.
-- **CI** — GitHub Actions running `pytest` on every push.
